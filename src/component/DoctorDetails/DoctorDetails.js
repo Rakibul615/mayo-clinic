@@ -1,16 +1,21 @@
 import { useParams } from 'react-router';
+import React, { useEffect, useState } from 'react';
 import fakeData from '../../fakeData/fakeData3.json'
 import './DoctorDetails.css'
 const DoctorDetails = () => {
+  const [doctorDetail, setDoctorDetail] = useState(fakeData);
+  useEffect(() => {
+    setDoctorDetail(fakeData);
+  }, [])
   const { key } = useParams();
   // const result = fakeData.find(doctor=>doctor.id===key) find function is not working
   const doctor = {
-    id: fakeData[key - 1].id,
-    title: fakeData[key - 1].title,
-    name: fakeData[key - 1].name,
-    img: fakeData[key - 1].docImg,
-    time: fakeData[key - 1].time,
-    fee: fakeData[key - 1].fee,
+    id:    doctorDetail[key - 1].id,
+    title: doctorDetail[key - 1].title,
+    name:  doctorDetail[key - 1].name,
+    img:   doctorDetail[key - 1].docImg,
+    time:  doctorDetail[key - 1].time,
+    fee:   doctorDetail[key - 1].fee,
   }
   const { img, name, title, time, fee } = doctor;
 
